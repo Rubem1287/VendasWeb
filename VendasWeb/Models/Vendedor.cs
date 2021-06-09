@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace VendasWeb.Models
 {
-    public class Vendas
+    public class Vendedor
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -16,11 +16,11 @@ namespace VendasWeb.Models
         public Departamentos Departamentos { get; set; }
         public ICollection<RegistroVendas> RegistroVendas { get; set; } = new List<RegistroVendas>();
 
-        public Vendas()
+        public Vendedor()
         {
         }
 
-        public Vendas(int id, string nome, string email, DateTime aniversario, double salarioBase, Departamentos departamentos)
+        public Vendedor(int id, string nome, string email, DateTime aniversario, double salarioBase, Departamentos departamentos)
         {
             Id = id;
             Nome = nome;

@@ -9,7 +9,7 @@ namespace VendasWeb.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Vendas",
+                name: "Vendedor",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -22,11 +22,11 @@ namespace VendasWeb.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vendas", x => x.Id);
+                    table.PrimaryKey("PK_Vendedor", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Vendas_Departamento_DepartamentosId",
+                        name: "FK_Vendedor_Departamentos_DepartamentosId",
                         column: x => x.DepartamentosId,
-                        principalTable: "Departamento",
+                        principalTable: "Departamentos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -40,27 +40,27 @@ namespace VendasWeb.Migrations
                     Date = table.Column<DateTime>(nullable: false),
                     Quantidade = table.Column<double>(nullable: false),
                     Status = table.Column<int>(nullable: false),
-                    VendasId = table.Column<int>(nullable: true)
+                    VendedorId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RegistroVendas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RegistroVendas_Vendas_VendasId",
-                        column: x => x.VendasId,
-                        principalTable: "Vendas",
+                        name: "FK_RegistroVendas_Vendedor_VendedorId",
+                        column: x => x.VendedorId,
+                        principalTable: "Vendedor",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_RegistroVendas_VendasId",
+                name: "IX_RegistroVendas_VendedorId",
                 table: "RegistroVendas",
-                column: "VendasId");
+                column: "VendedorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Vendas_DepartamentosId",
-                table: "Vendas",
+                name: "IX_Vendedor_DepartamentosId",
+                table: "Vendedor",
                 column: "DepartamentosId");
         }
 
@@ -70,7 +70,7 @@ namespace VendasWeb.Migrations
                 name: "RegistroVendas");
 
             migrationBuilder.DropTable(
-                name: "Vendas");
+                name: "Vendedor");
         }
     }
 }

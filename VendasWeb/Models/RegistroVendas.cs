@@ -12,19 +12,19 @@ namespace VendasWeb.Models
         public DateTime Date { get; set; }
         public double Quantidade { get; set; }
         public StatusVendas Status { get; set; }
-        public Vendas Vendas { get; set; }
+        public Vendedor Vendedor { get; set; }
 
         public RegistroVendas()
         {
         }
 
-        public RegistroVendas(int id, DateTime date, double quantidade, StatusVendas status, Vendas vendas)
+        public RegistroVendas(int id, DateTime date, double quantidade, StatusVendas status, Vendedor vendedor)
         {
             Id = id;
             Date = date;
             Quantidade = quantidade;
             Status = status;
-            Vendas = vendas;
+            Vendedor = vendedor;
         }
     }
 }

@@ -26,10 +26,10 @@ namespace VendasWeb.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departamento");
+                    b.ToTable("Departamentos");
                 });
 
-            modelBuilder.Entity("VendasWeb.Models.RegistroVendas", b =>
+            modelBuilder.Entity("VendedorWeb.Models.RegistroVendas", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -40,16 +40,16 @@ namespace VendasWeb.Migrations
 
                     b.Property<int>("Status");
 
-                    b.Property<int?>("VendasId");
+                    b.Property<int?>("VendedorId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VendasId");
+                    b.HasIndex("VendedorId");
 
                     b.ToTable("RegistroVendas");
                 });
 
-            modelBuilder.Entity("VendasWeb.Models.Vendas", b =>
+            modelBuilder.Entity("VendasWeb.Models.Vendedor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -68,20 +68,20 @@ namespace VendasWeb.Migrations
 
                     b.HasIndex("DepartamentosId");
 
-                    b.ToTable("Vendas");
+                    b.ToTable("Vendedor");
                 });
 
             modelBuilder.Entity("VendasWeb.Models.RegistroVendas", b =>
                 {
-                    b.HasOne("VendasWeb.Models.Vendas", "Vendas")
+                    b.HasOne("VendasWeb.Models.Vendedor", "Vendedor")
                         .WithMany("RegistroVendas")
-                        .HasForeignKey("VendasId");
+                        .HasForeignKey("VendedorId");
                 });
 
-            modelBuilder.Entity("VendasWeb.Models.Vendas", b =>
+            modelBuilder.Entity("VendasWeb.Models.Vendedor", b =>
                 {
                     b.HasOne("VendasWeb.Models.Departamentos", "Departamentos")
-                        .WithMany("Vendas")
+                        .WithMany("Vendedor")
                         .HasForeignKey("DepartamentosId");
                 });
 #pragma warning restore 612, 618

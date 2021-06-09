@@ -22,7 +22,7 @@ namespace VendasWeb.Controllers
         // GET: Departamentos
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Departamento.ToListAsync());
+            return View(await _context.Departamentos.ToListAsync());
         }
 
         // GET: Departamentos/Details/5
@@ -33,14 +33,14 @@ namespace VendasWeb.Controllers
                 return NotFound();
             }
 
-            var departamento = await _context.Departamento
+            var departamentos = await _context.Departamentos
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (departamento == null)
+            if (departamentos == null)
             {
                 return NotFound();
             }
 
-            return View(departamento);
+            return View(departamentos);
         }
 
         // GET: Departamentos/Create
@@ -54,15 +54,15 @@ namespace VendasWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome")] Departamentos departamento)
+        public async Task<IActionResult> Create([Bind("Id,Nome")] Departamentos departamentos)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(departamento);
+                _context.Add(departamentos);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(departamento);
+            return View(departamentos);
         }
 
         // GET: Departamentos/Edit/5
@@ -73,12 +73,12 @@ namespace VendasWeb.Controllers
                 return NotFound();
             }
 
-            var departamento = await _context.Departamento.FindAsync(id);
-            if (departamento == null)
+            var departamentos = await _context.Departamentos.FindAsync(id);
+            if (departamentos == null)
             {
                 return NotFound();
             }
-            return View(departamento);
+            return View(departamentos);
         }
 
         // POST: Departamentos/Edit/5
@@ -86,9 +86,9 @@ namespace VendasWeb.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] Departamentos departamento)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome")] Departamentos departamentos)
         {
-            if (id != departamento.Id)
+            if (id != departamentos.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace VendasWeb.Controllers
             {
                 try
                 {
-                    _context.Update(departamento);
+                    _context.Update(departamentos);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DepartamentoExists(departamento.Id))
+                    if (!DepartamentoExists(departamentos.Id))
                     {
                         return NotFound();
                     }
@@ -113,7 +113,7 @@ namespace VendasWeb.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(departamento);
+            return View(departamentos);
         }
 
         // GET: Departamentos/Delete/5
@@ -124,14 +124,14 @@ namespace VendasWeb.Controllers
                 return NotFound();
             }
 
-            var departamento = await _context.Departamento
+            var departamentos = await _context.Departamentos
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (departamento == null)
+            if (departamentos == null)
             {
                 return NotFound();
             }
 
-            return View(departamento);
+            return View(departamentos);
         }
 
         // POST: Departamentos/Delete/5
@@ -139,15 +139,15 @@ namespace VendasWeb.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var departamento = await _context.Departamento.FindAsync(id);
-            _context.Departamento.Remove(departamento);
+            var departamentos = await _context.Departamentos.FindAsync(id);
+            _context.Departamentos.Remove(departamentos);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool DepartamentoExists(int id)
         {
-            return _context.Departamento.Any(e => e.Id == id);
+            return _context.Departamentos.Any(e => e.Id == id);
         }
     }
 }

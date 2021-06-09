@@ -9,7 +9,7 @@ namespace VendasWeb.Models
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public ICollection<Vendas> Vendas { get; set; } = new List<Vendas>();
+        public ICollection<Vendedor> Vendedores { get; set; } = new List<Vendedor>();
 
         public Departamentos()
         {
@@ -21,15 +21,15 @@ namespace VendasWeb.Models
             Nome = nome;
         }
 
-        public void AddVendas(Vendas vendas) 
+        public void AddVendas(Vendedor vendores) 
         {
-            Vendas.Add(vendas);
+            Vendedores.Add(vendores);
         }
 
 
         public double TotalVendas(DateTime inicio, DateTime final)
         {
-            return Vendas.Sum(vendedores => vendedores.TotalVendas(inicio, final));
+            return Vendedores.Sum(vendedores => vendedores.TotalVendas(inicio, final));
         }
     }
 }

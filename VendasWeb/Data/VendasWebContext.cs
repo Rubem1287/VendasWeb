@@ -14,8 +14,8 @@ namespace VendasWeb.Data
         {
         }
 
-        public DbSet<Departamentos> Departamento { get; set; }
-        public DbSet<Vendas> Vendas { get; set; }
+        public DbSet<Departamentos> Departamentos { get; set; }
+        public DbSet<Vendedor> Vendedor { get; set; }
         public DbSet<RegistroVendas> RegistroVendas { get; set; }
     }
 }
