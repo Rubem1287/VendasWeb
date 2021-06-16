@@ -14,20 +14,21 @@ namespace VendasWeb.Models
         public DateTime Aniversario { get; set; }
         public double SalarioBase { get; set; }
         public Departamentos Departamentos { get; set; }
+        public int DepartamentosId { get; set; }
         public ICollection<RegistroVendas> RegistroVendas { get; set; } = new List<RegistroVendas>();
 
         public Vendedor()
         {
         }
 
-        public Vendedor(int id, string nome, string email, DateTime aniversario, double salarioBase, Departamentos departamentos)
+        public Vendedor(int id, string nome, string email, DateTime aniversario, double salarioBase, int departamentosId)
         {
             Id = id;
             Nome = nome;
             Email = email;
             Aniversario = aniversario;
             SalarioBase = salarioBase;
-            Departamentos = departamentos;
+            DepartamentosId = departamentosId;
         }
 
         public void AddVendas(RegistroVendas rv)
