@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using VendasWeb.Models;
 using VendasWeb.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace VendasWeb.Services
 {
@@ -17,9 +18,9 @@ namespace VendasWeb.Services
             _context = context;
         }
 
-        public List<Departamentos> FindAll()
+        public async Task<List<Departamentos>> FindAllAsync()
         {
-            return _context.Departamentos.OrderBy(x => x.Nome).ToList();
+            return await _context.Departamentos.OrderBy(x => x.Nome).ToListAsync();
         }
 
 

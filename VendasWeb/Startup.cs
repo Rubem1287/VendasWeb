@@ -14,6 +14,9 @@ using VendasWeb.Data;
 using VendasWeb.Services;
 using VendasWeb.AutoMapper;
 using Microsoft.Extensions.Hosting;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
+
 
 namespace VendasWeb
 {
@@ -45,11 +48,22 @@ namespace VendasWeb
             services.AddScoped<SeedingService>();
             services.AddScoped<VendedorService>();
             services.AddScoped<DepartamentosService>();
+            services.AddScoped<RegistroVendasService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var enUS = new CultureInfo("en_US");
+            var localizationOptions = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture(enUS),
+                SupportedCultures = new List<CultureInfo> { enUS },
+                SupportedUICultures = new List<CultureInfo> { enUS }
+            };
+
+            app.UseRequestLocalization(localizationOptions);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
