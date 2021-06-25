@@ -13,6 +13,7 @@ namespace VendasWeb.Models
 
         public Departamentos()
         {
+            Id = new int();
         }
 
         public Departamentos(int id, string nome)

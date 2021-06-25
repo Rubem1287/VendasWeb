@@ -23,17 +23,17 @@ namespace VendasWeb.Services
             var result = from obj in _context.RegistroVendas select obj;
             if (minDate.HasValue)
             {
-                result.Where(x => x.Date >= minDate.Value);
+                result.Where(x => x.Data >= minDate.Value);
             }
             if (maxDate.HasValue)
             {
-                result = result.Where(x => x.Date <= maxDate.Value);
+                result = result.Where(x => x.Data <= maxDate.Value);
             }
 
             return await result
                 .Include(x => x.Vendedor)
                 .Include(x => x.Vendedor.Departamentos)
-                .OrderByDescending(x => x.Date)
+                .OrderByDescending(x => x.Data)
                 .ToListAsync();
 
         }
@@ -43,17 +43,17 @@ namespace VendasWeb.Services
             var result = from obj in _context.RegistroVendas select obj;
             if (minDate.HasValue)
             {
-                result.Where(x => x.Date >= minDate.Value);
+                result.Where(x => x.Data >= minDate.Value);
             }
             if (maxDate.HasValue)
             {
-                result = result.Where(x => x.Date <= maxDate.Value);
+                result = result.Where(x => x.Data <= maxDate.Value);
             }
 
             return await result
                 .Include(x => x.Vendedor)
                 .Include(x => x.Vendedor.Departamentos)
-                .OrderByDescending(x => x.Date)
+                .OrderByDescending(x => x.Data)
                 .GroupBy(x=>x.Vendedor.Departamentos)
                 .ToListAsync();
 

@@ -43,7 +43,7 @@ namespace VendasWeb
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<VendasWebContext>(options =>
-                    options.UseMySql(Configuration.GetConnectionString("VendasWebContext"), builder =>builder.MigrationsAssembly("VendasWeb")));
+                    options.UseSqlServer(Configuration.GetConnectionString("VendasWebContext")));
             services.AddAutoMapper(typeof(AutoMapperProfile));
             services.AddScoped<SeedingService>();
             services.AddScoped<VendedorService>();

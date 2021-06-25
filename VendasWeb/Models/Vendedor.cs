@@ -36,6 +36,7 @@ namespace VendasWeb.Models
 
         public Vendedor()
         {
+            Id = new int();
         }
 
         public Vendedor(int id, string nome, string email, DateTime aniversario, double salarioBase, int departamentosId)
@@ -60,7 +61,7 @@ namespace VendasWeb.Models
 
         public double TotalVendas(DateTime inicial, DateTime final)
         {
-            return RegistroVendas.Where(rv => rv.Date >= inicial && rv.Date <= final).Sum(rv => rv.Quantidade);
+            return RegistroVendas.Where(rv => rv.Data >= inicial && rv.Data <= final).Sum(rv => rv.Quantidade);
         }
 
     }
